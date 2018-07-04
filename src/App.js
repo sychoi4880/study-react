@@ -9,16 +9,6 @@ const goals = [
   '개발 편의를 위한 VSCode IDE를 익힌다. ',
 ];
 
-const arrMonth = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN'];
-
-const MonthNameList = props => {
-  return (
-    <div>
-      <ol>{props.items.map((item, idx) => <li key={idx}>{item}</li>)}</ol>
-    </div>
-  );
-};
-
 class App extends Component {
   render() {
     return (
