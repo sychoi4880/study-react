@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LectureGoalList from './components/LectureGoalList';
+import Timer from './components/Timer';
 import logo from './logo.svg';
 import './App.css';
 
@@ -10,17 +11,21 @@ const goals = [
 ];
 
 class App extends Component {
+  handleClick = e => {
+    console.log(e.target);
+  };
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" onClick={this.handleClick} />
           <h1 className="App-title">React</h1>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <LectureGoalList items={goals} title={'강의 목표'} />
+        <Timer expireDate={'2018-07-04T17:00:00+09:00'} />
       </div>
     );
   }
