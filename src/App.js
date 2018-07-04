@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import LectureGoalList from './components/LectureGoalList';
 import Timer from './components/Timer';
 import logo from './logo.svg';
@@ -11,10 +12,20 @@ const goals = [
 ];
 
 class App extends Component {
-  handleClick = e => {
-    console.log(e.target);
+  state = {
+    isExpired: false,
   };
+
+  handleComplete = () => {
+    // 자식이 종료되고 1초 후에
+    this.setState({ isExpired: true });
+    console.log('timer 종료되고 1초 경과');
+  };
+
   render() {
+    //const isExpired = moment('2018-07-04T17:00:00+09:00') < moment();
+    const { isExpired } = this.state;
+
     return (
       <div className="App">
         <header className="App-header">
@@ -25,7 +36,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <LectureGoalList items={goals} title={'강의 목표'} />
-        <Timer expireDate={'2018-07-04T17:00:00+09:00'} />
+        {!isExpired && <Timer expireDate={'2018-07-04T16:10:00+09:00'} onComplete={this.handleComplete} />}
       </div>
     );
   }
